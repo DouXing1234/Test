@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;/*改变盒子内的排列方式，默认是横排，flex-direction:colum变成竖排*/
+            padding: 50px;
+        }
+        .title{
+            text-align: center;
+        }
+        .goods{
+            background-color: aliceblue;
+            display: flex;
+            height: 40px;
+            line-height: 50px;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .goods_name,.goods.price{
+            flex-grow: 1;/*增加子元素宽度,在父元素中均分*/
+        }
+        .goods_name{
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 class="title">商品列表</h1>
+        <div class="goods">
+            <div class="goods_name">手机一号</div>
+            <div class="goods_price">1000</div>
+        </div>
+    </div>
+</body>
+</html>

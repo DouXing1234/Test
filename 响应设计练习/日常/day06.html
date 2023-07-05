@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../资料/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin: 0 auto;
+            width: 600px;
+            padding: 7px;
+        }
+        .henad1{
+            width: 500px;
+            height: 50px;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        i{
+           position: relative;
+           left: 20px;
+        }
+        input{
+            width: 200px;
+            height: 35px;
+            outline: none;
+            padding: 0 0 0 22px;
+        }
+        img{
+            width: 125px;
+        }
+        .box_x{
+            margin-top: 35px;
+        }
+        span{
+            position: relative;
+            left: 200px;
+            bottom: 60.25px;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div class="box">
+        <div class="henad1">
+        <i class="fa fa-search"></i>
+        <input type="search" placeholder="请输入搜索内容" v-model="keyword">
+        </div>
+        <ul>
+        <li class="box_x" v-for="li in item" >
+            <img :src="li.src" alt="" srcset="">
+            <span>{{li.name}}</span>
+        </li>
+        </ul>
+        </div>
+    </div>
+    <script src="../资料/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                keyword:'',
+                list:[
+                    {src:'../作业/图片/6.png',name:'c语言'},
+                    {src:'../作业/图片/6.png',name:'c++'},
+                    {src:'../作业/图片/6.png',name:'java'},
+                    {src:'../作业/图片/6.png',name:'python'},
+                    {src:'../作业/图片/6.png',name:'网络爬虫'}
+                ]
+            },
+            computed:{
+                item(){
+                   return this.list.filter((items)=>{
+                    return items.name.indexOf(this.keyword.toUpperCase())!==-1 || items.name.indexOf(this.keyword.toLowerCase())!==-1
+                   })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

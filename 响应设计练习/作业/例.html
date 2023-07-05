@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .Image{
+      margin-top: 80px;
+      width: 600px;
+      height: 250px;
+      background-repeat: no-repeat;
+      background-size:cover ;
+    }
+    .ul{
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    .li{
+      width: 200px;
+      height: 100px;
+      margin: 10px 5px;
+      background-size: cover;
+
+    }
+    .Image,.li{
+      border: 1px solid #000;
+    }
+    .active{
+      border: 1px solid #f00;
+    }
+</style>
+
+<body>
+    <script src="../资料/vue.js"></script>
+
+    <div id="app">
+        <div class="Image" :style="isAlls()"></div>
+        <div class="ul">
+          <div class="li" :style="isPictures(0)" @click="OnClick(0)" ></div>
+          <div class="li" :style="isPictures(1)" @click="OnClick(1)" ></div>
+          <div class="li" :style="isPictures(2)" @click="OnClick(2)" ></div>
+          <div class="li" :style="isPictures(3)" @click="OnClick(3)" ></div>
+        </div>
+      </div>
+
+    <script>
+        let vue=new Vue({
+    el:"#app",
+    data:{
+      isImages:['url(../作业/图片/1.png)',
+      'url(../作业/图片/2.jpg)','url(../作业/图片/3.png)','url(../作业/图片/4.jpg)'],
+      nums:0,
+      isActive:false,
+      isOlderActive:false,
+    },
+    methods:{
+      
+      /*四个小图片插入*/
+      isPictures:function(val){
+        return {backgroundImage:this.isImages[val]}
+      },
+      /*鼠标单击后所产生的变化*/
+      OnClick:function(val){
+        this.nums=val
+        active=document.querySelectorAll(".li")
+        OlderActive=document.querySelector("div.li.active")
+        if(OlderActive!=null){
+          OlderActive.classList.remove("active")
+        }
+        active[val].classList.add("active")
+      },
+      isAlls:function(){
+        return {backgroundImage:this.isImages[this.nums]}
+      },
+    },
+  })
+    </script>
+</body>
+</html>

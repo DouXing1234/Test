@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 95%;
+        }
+
+        .top_tr {
+            font-weight: bolder;
+        }
+
+        .widther {
+            width: 15%;
+        }
+
+        .book_widther {
+            width: 25%;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        tr,
+        td {
+            border: 1px solid rgb(213, 218, 218);
+            ;
+            font-size: 22px;
+        }
+
+        .top {
+            background-color: rgba(247, 246, 247);
+        }
+
+        button {
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+        }
+
+        .buy {
+            background-color: blue;
+        }
+
+        .sale {
+            background-color: orange;
+        }
+
+        .del {
+            background-color: red;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div v-if="books.length">
+            <table>
+                <tr class="top">
+                    <td class="top_tr book_widther">书名</td>
+                    <td class="top_tr widther">作者</td>
+                    <td class="top_tr widther">数量</td>
+                    <td class="top_tr">操作</td>
+                </tr>
+                <tr v-for="item,index in books">
+                    <td>{{item.name}}</td>
+                    <td>{{item.author}}</td>
+                    <td>{{item.num}}</td>
+                    <td>
+                        <button class="buy" @click="buy_item(item.id)">买入</button>
+                        <button class="sale" @click="sale_item(item.id)">卖出</button>
+                        <button class="del" @click="remove(index)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div v-else>
+            <h1>你现在没有添加书籍</h1>
+        </div>
+    </div>
+    <script src="../资料/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                books: [
+                    { id: 1, name: "《人工智能技术》", author: "华为技术有限公司", num: 0 },
+                    { id: 2, name: "《python爬虫技术》", author: "潘峰", num: 0 },
+                    { id: 3, name: "《vue.js 2.X实践指南》", author: "邹琼俊", num: 0 },
+                ]
+            },
+            methods: {
+                buy_item(val) {
+                    for (let i = 0; i < this.books.length; i++) {
+                        if (val == this.books[i].id) {
+                            this.books[i].num += 1
+                            if (this.books[i].num > 10) {
+                                this.books[i].num = 10
+                            }
+                        }
+                    }
+                },
+                sale_item(val) {
+                    for (let i = 0; i < this.books.length; i++) {
+                        if (val == this.books[i].id) {
+                            this.books[i].num -= 1
+                            if (this.books[i].num <= 0) {
+                                this.books[i].num = 0
+                            }
+                        }
+                    }
+                },
+                remove(val) {
+                    this.books.splice(val, 1)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

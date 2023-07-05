@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        table{
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 10px 20px;
+        }
+        .buy{
+            background-color: blue;
+        }
+        .seler{
+            background-color: yellow;
+        }
+        .drop{
+            background-color: red;
+        }
+        button{
+            margin: 5px;
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <table border="1">
+            <tr>
+                <th>书名</th>
+                <th>作者</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>{{item.book}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.sum}}</td>
+                <td>
+                    <button class="buy">买入</button>
+                    <button class="seler">卖出</button>
+                    <button class="drop">删除</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="../资料/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            methods:{
+
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../资料/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .frm {
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .shower,
+        form {
+            width: 50%;
+        }
+
+        label {
+            text-align: center;
+        }
+
+        input {
+            border: none;
+            outline: none;
+        }
+
+        .user input,
+        .pwd input,
+        .pwds input {
+            width: 95%;
+            height: 30px;
+            font-size: 18px;
+        }
+
+        .user,
+        .pwd,
+        .pwds {
+            border: 1px solid #000;
+            margin: 20px 0;
+            padding: 5px;
+        }
+
+        i {
+            font-size: 30px;
+        }
+
+        i[class="fa fa-user"] {
+            color: #000;
+        }
+
+        .sex {
+            border: none;
+        }
+
+        .frm div {
+            margin: 10px 0;
+        }
+
+        select {
+            height: 30px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            background-color: rgb(41, 41, 161);
+            color: #fff;
+            border: none;
+            font-size: 18px;
+        }
+
+        .shower {
+            height: 200px;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .shower div {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="shower">
+            <div>用户名:{{user}}</div>
+            <div>密码：{{pwd}}</div>
+            <div>确认密码:{{pwds}}</div>
+            <div>性别:{{sex}}</div>
+            <div>爱好:{{fav.join(",")}}</div>
+            <div>地址：{{top_city}}-{{city}}-{{low_city}}</div>
+        </div>
+        <div class="frm">
+            <form action="">
+                <label for="">
+                    <h1>注册</h1>
+                </label>
+                <div class="user">
+                    <i class="fa fa-user-o"></i>
+                    <input type="text" name="user" id="" v-model.lazy="user">
+                </div>
+                <div class="pwd">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="pwd" id="" v-model.lazy="pwd">
+                </div>
+                <div class="pwds">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="pwds" id="" v-model.lazy="pwds">
+                </div>
+                <div>
+                    <i class="fa fa-venus-mars"></i>
+                    <input type="radio" name="sex" v-model="sex" value="男">男
+                    <input type="radio" name="sex" v-model="sex" value="女">女
+                </div>
+                <div>
+                    <i class="fa fa-snowflake-o"></i>
+                    <input type="checkbox" name="fav" value="购物" v-model="fav">购物
+                    <input type="checkbox" name="fav" value="电影" v-model="fav">电影
+                    <input type="checkbox" name="fav" value="动漫" v-model="fav">动漫
+                    <input type="checkbox" name="fav" value="看书" v-model="fav">看书
+                </div>
+                <div>
+                    <i class="fa fa-address-card-o"></i>
+                    <select name="" id="" v-model.lazy="top_city">
+                        <option value="default">请选择省份</option>
+                        <option value="福建省">福建省</option>
+                    </select>
+                    <select name="" id="" v-model.lazy="city">
+                        <option value="default">请选择市级</option>
+                        <option value="泉州市">泉州市</option>
+                    </select>
+                    <select name="" id="" v-model.lazy="low_city">
+                        <option value="default">请选择镇</option>
+                        <option value="内坑镇">内坑镇</option>
+                    </select>
+                </div>
+                <button @click.prevent="zhuce()">注册</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="../资料/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            user: "",
+            pwd: "",
+            pwds: "",
+            sex: "",
+            fav: [],
+            top_city: "",
+            city: "",
+            low_city: ""
+        },
+        methods: {
+            zhuce() {
+                
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

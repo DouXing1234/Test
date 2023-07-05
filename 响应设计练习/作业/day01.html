@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .btn {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    button {
+      margin: 0 20px;
+      height: 45px;
+      width: 150px;
+      color: #fff;
+      font-weight: bolder;
+      border: none;
+      background-color: rgb(45, 130, 248);
+      border-radius: 10px;
+    }
+
+    .mask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+
+    .window {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 14px;
+      padding: 10px;
+      border-bottom: 1px solid #000;
+    }
+
+    .btns {
+      display: flex;
+      width: 250px;
+      margin: 0 auto;
+      margin-bottom: -30px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      height: 150px;
+    }
+
+    .content>div {
+      height: 150px;
+      flex: 1
+    }
+
+    #app {
+      display: flex;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+
+    <div class="btn">
+      <button @click="ChangeFull()">全局模态框组件</button>
+      <button @click="ChangePart()">局部模态框组件</button>
+    </div>
+
+    <div v-if="isFullModal">
+      <apps></apps>
+    </div>
+    <div v-if="isPartModal">
+      <apis></apis>
+    </div>
+  </div>
+  <template id="apps">
+    <div>
+      <div class="mask">
+        <div class="window">
+          <div class="title">全局模态框</div>
+          <div class="content">
+            <div>我是全局模态框</div>
+            <div class="btn btns">
+              <button>确定</button>
+              <button @click="btnCancel()">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="apis">
+    <div>
+      <div class="mask">
+        <div class="window">
+          <div class="title">局部模态框</div>
+          <div class="content">
+            <div>我是局部模态框</div>
+            <div class="btn btns">
+              <button>确定</button>
+              <button @click="btnCancel()">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </template>
+  <script src="../资料/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        isFullModal: false,
+        isPartModal: false
+      },
+      methods: {
+        ChangeFull() {
+          this.isFullModal = true
+        },
+        ChangePart() {
+          this.isPartModal = true
+        }
+      },
+      components: {
+        'apps': {
+          template: "#apps",
+          methods: {
+            btnCancel() {
+              alert("全局取消")
+              this.$root.isFullModal = false
+            }
+          }
+        },
+        'apis': {
+          template: "#apis",
+          methods: {
+            btnCancel() {
+              alert("局部取消")
+              this.$root.isPartModal = false
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
